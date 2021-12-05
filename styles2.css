@@ -1,0 +1,248 @@
+/* Define all sections */
+body {
+  background: white;
+  font-family: monospace;
+  font-size: x-large;
+  margin: 0;
+  color: black;
+  height: 100vh;
+
+  display: grid;
+  grid-gap: 10px;
+  
+  grid-template-areas:
+      "header"
+      "hero"
+      "body"
+      "footer"
+}
+
+/* Header section */
+header {
+  background: lightskyblue;
+  padding: 10px;
+  grid-area: header;
+  text-align: center;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  grid-template-areas:
+      "brand brand"
+      "nav tools";
+}
+
+header .brand {
+  grid-area: brand;
+ }
+
+header nav {
+  
+  grid-area: nav;
+  font-size: xx-large;
+  align-items: center;
+  padding: 20px;
+  
+}
+
+
+header .tools {
+  grid-area: tools;
+  color: rgb(2, 2, 59);
+
+  text-align: right;
+}
+
+/* Hero section */
+.hero {
+  background: lightskyblue;
+  padding: 40px;
+  grid-area: hero;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  grid-template-areas:
+      "action";
+  }
+
+.hero .action {
+  background: lightskyblue;
+  grid-area: action;
+  color: rgb(2, 2, 59)
+  
+}
+
+.hero .feature {
+  background: lightskyblue;
+  grid-area: feature;
+  color: rgb(2, 2, 59)
+}
+
+/* Body section */
+main {
+  background: lightskyblue;;
+  padding: 40px;
+  grid-area: body;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  grid-template-areas: 
+      "feature"
+      "ad"
+      "listing";
+}
+
+main .feature {
+  background: lightskyblue;
+  grid-area: feature;
+}
+
+main .mobile-ad {
+  grid-area: ad;
+}
+
+main .listing {
+  background: lightskyblue;;
+  grid-area: listing;
+}
+
+/* Footer section */
+footer {
+  background: lightskyblue;
+  padding: 10px;
+  grid-area: footer;
+  text-align: center;
+}
+
+/* Hide Sections which are not part of mobile */
+.desktop-ad {
+  grid-area: ad;
+  display: none;
+}
+
+.hero .feature {
+  display: none;
+  text-align: center;
+}
+
+/* Sidebar section */
+.sidebar {
+  background: lightskyblue;
+  padding: 20px;
+  grid-area: sidebar;
+
+  display: none;
+}
+
+.sidebar .feature {
+  background: lightskyblue;
+  height: 100%;
+}
+
+/* Other */
+.mobile-ad img {
+  vertical-align: top;
+  width: 100%;
+}
+
+.desktop-ad img {
+  vertical-align: top;
+  width: 350px;
+}
+
+.mobile-ad:hover {
+  opacity: 0.5;
+}
+
+.desktop-ad:hover {
+  opacity: 0.5;
+}
+
+/* Tablet friendly layout */
+@media (min-width: 576px) {
+  body {
+      grid-template-rows: auto auto 1fr auto auto;
+      grid-template-areas:
+          "header"
+          "hero"
+          "body"
+          "sidebar"
+          "footer";
+  }
+
+  /* Change Header Layout */
+  header {
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-areas:
+          "brand nav tools";
+  }
+
+  /* Change Hero Layout */
+  .hero {
+      grid-template-areas:
+          "feature"
+          "action";
+  }
+
+  .hero .feature {
+      display: block;
+  }
+
+  /* Change Body Layout */
+  main {
+      grid-template-columns: 1fr 200px;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+          "feature ad"
+          "listing listing";
+  }
+
+  /* Change Sidebar Layout */
+  .sidebar {
+      display: grid;
+  }
+
+  .mobile-ad img {
+      width: 200px;
+  }
+}
+
+/* Desktop friendly layout */
+@media (min-width: 992px) {
+  body {
+      grid-template-columns: 1fr 350px;
+      grid-template-rows: auto auto 1fr auto;
+      grid-template-areas:
+          "header header"
+          "hero ad"
+          "body sidebar"
+          "footer footer"
+  }
+
+  /* Change Hero Layout */
+  .hero {
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas:
+          "feature action"
+  }
+
+  /* Change Body Layout */
+  main {
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: 1fr;
+      grid-template-areas:
+          "feature listing"
+  }
+
+  .mobile-ad {
+      display: none;
+  }
+
+  .desktop-ad {
+      display: block;
+  }
+
+
+}
